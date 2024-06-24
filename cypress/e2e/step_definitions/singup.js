@@ -1,7 +1,7 @@
 import { Given, When, And, Then, } from "@badeball/cypress-cucumber-preprocessor";
 
 
-const sing = require("../../pages/Singup.cy")
+const sing = require("../../pages/singup.cy")
 
 Cypress.on('uncaught:exception', (err, runnable) => {
     return false

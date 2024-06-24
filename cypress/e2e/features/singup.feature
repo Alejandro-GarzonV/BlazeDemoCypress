@@ -12,9 +12,8 @@ Scenario Outline:Registro de usuario valido
         | user    | password | 
         | ABCDEFGHIJkm | Prueba2  |
 
-#Scenario: Inicio de sesión inválido
- # Given el usuario navega a la página de inicio
- # When hace clic en "Log in" en la barra de navegación
- # And ingresa un nombre de usuario y/o contraseña inválidos
- # And hace clic en "Log in" para iniciar sesión
- # Then se muestra un mensaje de error indicando que el inicio de sesión ha fallado        
+Scenario: Registro de usuario invalido
+    When hace clic en Sign up en la barra de navegacion
+    And ingresa el usuario <user> y la contraseña <password>
+    And hace clic en Sign up para registrar el usuario
+    Then Verificar que se muestra un mensaje de error indicando los campos invalidos   

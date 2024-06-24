@@ -1,4 +1,4 @@
-class Singup {
+class singup {
 
     elements = {
         singupLabel:()=> cy.get('#signin2'),
@@ -46,4 +46,4 @@ class Singup {
             this.elements.singupButton().should('be.visible').click({ force: true })
         }
 }
-module.exports = new Singup();
+module.exports = new singup();
