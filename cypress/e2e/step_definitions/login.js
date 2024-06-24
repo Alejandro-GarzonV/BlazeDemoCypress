@@ -1,6 +1,6 @@
 import { Given, When, And, Then, } from "@badeball/cypress-cucumber-preprocessor";
-import login from '../../pages/LoginPage/login.cy';
-const loginconst = new login();
+import login from '../../pages/login.cy';
+const loginInstance = new login();
 
 Cypress.on('uncaught:exception', (err, runnable) => {
     return false
@@ -9,16 +9,16 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 Given('Un usuario Navega al modal de login', () => {
     cy.visit('/');
    // login.abrirModalLogin();
-    loginconst.abrirModalLogin();
+   loginInstance.abrirModalLogin();
 });
   
 When('Ingresa el usuario <userlog> y la contraseña <passwordlog>', (userlog,pwdlog) => {
-  loginconst.usuarioImputLogin(userlog);
-  loginconst.passwordImputLogin(pwdlog);
+  loginInstance.usuarioImputLogin(userlog);
+  loginInstance.passwordImputLogin(pwdlog);
 });
   
 And('Hacer clic en el boton Log in para iniciar sesion', () => {
-  loginconst.clickLoginButton();
+  loginInstance.clickLoginButton();
 });
   
 Then('Verificar que se redirige al usuario a la pagina de inicio', () => {

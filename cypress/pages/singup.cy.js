@@ -28,7 +28,7 @@ class singup {
             return nombre;
         }// borrar entre comentarios
 
-        usuarioImput(usuario) {
+        singupUsuarioImput(usuario) {
             // condigo temporal para pruebas debido a que  el nombre se quema  en la page
             console.log('Nombre de usuario esrito:', usuario);
             const nombre =this.generarNombreAleatorio();
@@ -37,13 +37,13 @@ class singup {
             
             this.elements.singupUsuarioImput().should('be.visible',).invoke('val', nombre).trigger('input');
         }
-        passwordImput(password) {
+        singupPasswordImput(password) {
             this.elements.singupPasswordImput().should('be.visible').invoke('val', password).trigger('input');
         }
         cerrarModalLogin() {
             this.elements.closeButton().should('be.visible').click({ force: true })
         }
-        clickRegistrar() {
+        singupClickRegistrar() {
             this.elements.singupButton().should('be.visible').click({ force: true })
         }
         verificarAlertMessage(expectedMessage) {
