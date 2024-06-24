@@ -45,5 +45,10 @@ class singup {
         clickRegistrar() {
             this.elements.singupButton().should('be.visible').click({ force: true })
         }
+        verificarAlertMessage(expectedMessage) {
+            cy.on('window:alert', (actualMessage) => {
+              expect(actualMessage).to.equal(expectedMessage);
+            });
+          }
 }
 module.exports = new singup();

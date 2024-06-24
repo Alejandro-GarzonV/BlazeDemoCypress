@@ -1,7 +1,4 @@
-
-class LoginPage {
-
-
+class login {
     elements = {
         loginLabel:()=>  cy.get('#login2'),
         usuarioImput: () => cy.get("#loginusername"),
@@ -13,15 +10,17 @@ class LoginPage {
     abrirModalLogin(){
         this.elements.loginLabel().should('be.visible').click({ force: true })
     }
-    usuarioImput(usuario) {
-        this.elements.usuarioImput().should('be.visible').type(usuario)
+    usuarioImputLogin(usuario) {
+        this.elements.usuarioImput().should('be.visible').invoke('val', usuario).trigger('input');
     }
-    passwordImput(password) {
-        this.elements.passwordImput().should('be.visible').type(password)
+    passwordImputLogin(password) {
+        this.elements.passwordImput().should('be.visible').invoke('val', password).trigger('input');
     }
     cerrarModalLogin() {
         this.elements.closeButton().should('be.visible').click({ force: true })
     }
- 
+    clickLoginButton() {
+        this.elements.closeButton().should('be.visible').click({ force: true })
+    }
 }
-module.exports= new LoginPage();
+module.exports=new login();
