@@ -34,6 +34,7 @@ class singup {
             const nombre =this.generarNombreAleatorio();
             console.log('Nombre de usuario aleatorio:', nombre);
             //borrar hacia arriba entre comentarios
+            
             this.elements.singupUsuarioImput().should('be.visible',).invoke('val', nombre).trigger('input');
         }
         passwordImput(password) {
@@ -51,4 +52,5 @@ class singup {
             });
           }
 }
-module.exports = new singup();
+//module.exports = new singup();
+export default singup;

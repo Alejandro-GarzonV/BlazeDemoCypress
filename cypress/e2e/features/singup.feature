@@ -1,6 +1,6 @@
-Feature: Registro y Autenticación
+Feature: Registro
 
-  Background: un usuario esta en la pagina principal 
+  Background: un usuario se registra en la pagina principal
     Given Un usuario navega a www.demoblaze.com
 
 Scenario Outline:Registro de usuario valido
