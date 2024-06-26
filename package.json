@@ -4,21 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "limpiar-reporte": "rimraf ./allure-report && rimraf ./allure-results",
+    "ejecutar-pruebas": "cypress run --browser chrome --headed --env allure=true",
+    "generar-reporte": "allure generate allure-results -o allure-report --clean",
+    "abrir-reporte": "allure open",
+    "test": "npm run limpiar-reporte && npm run ejecutar-pruebas & npm run generar-reporte && npm run abrir-reporte",
+    "cy:open": "cypress open"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^12.2.0",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.1",
+    "@mmisty/cypress-allure-adapter": "^2.0.8",
+    "allure-commandline": "^2.29.0",
     "cypress": "^13.12.0",
     "cypress-esbuild-preprocessor": "^1.0.2",
-    "esbuild": "^0.21.5"
+    "esbuild": "^0.21.5",
+    "rimraf": "^5.0.7"
   },
   "cypress-cucumber-preprocessor": {
-    "stepDefinitions": "cypress/e2e/step_definitions/**/*.{js,ts}",
-    "html": {
-      "enabled": true
-    }
+    "stepDefinitions": "cypress/e2e/step_definitions/**/*.{js,ts}"
   }
 }

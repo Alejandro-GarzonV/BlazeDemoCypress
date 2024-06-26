@@ -9,6 +9,18 @@
 #Paso 3.1: Instalar cucumber                 >  el badeball actualizado no tiene la sentencia AND por que se debe  
 instalar de forma forzada  la version 12.2.0 con la siguiente  linea:
                                              > npm install @badeball/cypress-cucumber-preprocessor@12.2.0 --save-dev --legacy-peer-deps  
+#Paso 3.1: instalacion de report allure > npm install @mmisty/cypress-allure-adapter@latest --save-dev --legacy-peer-deps
+#Paso 3.2: instalacion de commandline   > npm install -D allure-commandline --legacy-peer-deps
+#Paso 3.3: instalacion de rimraf        > npm install -D rimraf --legacy-peer-deps 
+#Paso 3.4: agregas  lo siguientes  scripts
+                    "scripts": {
+                    "limpiar-reporte": "rimraf ./allure-report && rimraf ./allure-results",
+                    "ejecutar-pruebas": "cypress run --browser chrome --headed --env allure=true",
+                    "generar-reporte": "allure generate allure-results -o allure-report --clean",
+                    "abrir-reporte": "allure open",
+                    "test": "npm run limpiar-reporte && npm run ejecutar-pruebas & npm run generar-reporte && npm run abrir-reporte",
+                    "cy:open": "cypress open"
+                  },
 #Paso 4: agregar dependencia en el package.json >
                 "cypress-cucumber-preprocessor": {
                     "stepDefinitions": "cypress/e2e/step_definitions/**/*.{js,ts}"
@@ -22,10 +34,23 @@ const addCucumberPreprocessorPlugin =
   require("@badeball/cypress-cucumber-preprocessor").addCucumberPreprocessorPlugin;
 const createEsbuildPlugin =
   require("@badeball/cypress-cucumber-preprocessor/esbuild").createEsbuildPlugin;
+const { configureAllureAdapterPlugins } = require('@mmisty/cypress-allure-adapter/plugins');
 module.exports = defineConfig({
   viewportWidth: 1280,
   viewportHeight: 720,
   defaultCommandTimeout:60000,
+  env: {
+    allure: true,
+    allureResults: 'allure-results',
+    allureResultsWatchPath: 'allure-results',
+    allureLogCyCommands: true,
+    allureSkipCommands: 'screenshot,wait',
+    allureWrapCustomCommands: true,
+    allureCleanResults: false,
+    allureAttachRequests: false,
+    allureCompactAttachments: true,
+    allureAddVideoOnPass: false,
+  },
   e2e: {
     async setupNodeEvents(on, config) {
       const bundler = createBundler({
@@ -33,6 +58,7 @@ module.exports = defineConfig({
       });
       on("file:preprocessor", bundler);
       await addCucumberPreprocessorPlugin(on, config);
+      configureAllureAdapterPlugins(on, config); // Integración de Allure Adapter
       return config;
     },
     specPattern: "cypress/e2e/features/*.feature",
@@ -43,6 +69,11 @@ module.exports = defineConfig({
 
 #Paso 6: iniciar  cypress para crear estructura >  npx cypress open
 #Paso 7: en la carpeta e2e > crear carpetas features, step_definitions y en la  carpeta cypress > crear carpeta pages
+
+
+
+
+
 
 Opcionales 
 #Paso 1: Instalar npx "si no esta instalado" >  npm install -g npx
