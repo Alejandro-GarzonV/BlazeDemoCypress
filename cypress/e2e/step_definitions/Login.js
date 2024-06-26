@@ -6,20 +6,18 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return false
 })
 
-Given('Un usuario Navega al modal de login', () => {
-   cy.visit('/');
-   loginInstance.abrirModalLogin();
-});
-  
-When('joy Ingresa el usuario <word> y la contraseña <word>', (userlog,pwdlog) => {
-  loginInstance.usuarioImputLogin(userlog);
-  loginInstance.passwordImputLogin(pwdlog);
-});
-  
-And('Hacer clic en el boton Log in para iniciar sesion', () => {
+Given('Luis navega al modal de inicio de sesion',()=> {
+  cy.visit('/');
+  loginInstance.abrirModalLogin();
+})
+When("ingresa sus credenciales {word},{word}",(user,password)=>{
+  loginInstance.usuarioImputLogin(user);
+  loginInstance.passwordImputLogin(password);
+})
+And('inicia la sesion con un click',()=>{
   loginInstance.clickLoginButton();
-});
-  
-Then('Visualiza la pagina de inicio con mensaje de Bienvenida y el nombre de', () => {
-    cy.wait(1000);
-});
+})
+Then ('visualiza usuario y mensaje {word} {word}',(mensaje,Usuario)=>{
+  loginInstance.validarLoginExitoso(mensaje,Usuario)
+  cy.wait(2000)
+})

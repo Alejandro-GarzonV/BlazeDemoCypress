@@ -5,6 +5,7 @@ class Login {
         loginPasswordImput: () => cy.get("#loginpassword"),
         loginCloseButton :() => cy.get('#logInModal > .modal-dialog > .modal-content > .modal-footer > .btn-secondary') ,
         loginButton :() => cy.get('#logInModal > .modal-dialog > .modal-content > .modal-footer > .btn-primary'),
+        msjWelcome:() => cy.get('#nameofuser')
     };
     
     abrirModalLogin(){
@@ -21,6 +22,9 @@ class Login {
     }
     clickLoginButton() {
         this.elements.loginButton().should('be.visible').click({ force: true })
+    }
+    validarLoginExitoso(mensaje){
+        this.elements.msjWelcome().should('be.visible').and('contain.text', mensaje);
     }
 }
 export default Login;
