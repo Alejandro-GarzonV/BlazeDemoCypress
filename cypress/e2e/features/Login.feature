@@ -1,6 +1,6 @@
 Feature: Autenticacion
 
-Scenario Outline: Login de un usuariio valido
+Scenario Outline: Login de un usuario valido
 Given Luis navega al modal de inicio de sesion
 When ingresa sus credenciales <user>,<pwd>
 And inicia la sesion con un click
