@@ -11,7 +11,7 @@
     "test": "npm run limpiar-reporte && npm run ejecutar-pruebas & npm run generar-reporte && npm run abrir-reporte",
     "cy:open": "cypress open"
   },
-  "author": "",
+  "author": "Alejandro garzon",
   "license": "ISC",
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^12.2.0",
