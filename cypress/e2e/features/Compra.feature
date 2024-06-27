@@ -2,11 +2,11 @@ Feature: Realizar una compra
 
 Scenario Outline: Compra de un producto
 Given un usuario en el home del sitio
-When ingresa a una categoria y selecciona el producto
+When ingresa a una categoria <categoria> y selecciona el producto <producto>
 And agrega el producto al carrito
-And acepta la orden con el producto
-And diligencia los datos de la orden y la acepta
+And genera la orden con el producto
+And diligencia la orden con los datos <name> <country> <city> <card> <month> <year> y acepta la compra
 Then cierra el mensaje de compra despues de visualizarlo
 Examples:
-    | Header 1 | Header 2 | Header 3 |
-    | Value 1  | Value 2  | Value 3  |
+    |categoria|producto |name              |country |city  |card            |month|year|
+    |Phones   |"Nexus 6"|"alejandro garzon"|colombia|Bogota|4239383687554316| 06  |2024|
