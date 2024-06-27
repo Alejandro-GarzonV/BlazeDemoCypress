@@ -29,12 +29,17 @@ module.exports = defineConfig({
   e2e: {
     async setupNodeEvents(on, config) {
       const bundler = createBundler({
+        define: { global: 'window' },
         plugins: [createEsbuildPlugin(config)],
       });
+
       on("file:preprocessor", bundler);
       await addCucumberPreprocessorPlugin(on, config);
+
       configureAllureAdapterPlugins(on, config); // Integración de Allure Adapter
+
       return config;
+      
     },
     specPattern: "cypress/e2e/features/*.feature",
     baseUrl:"https://www.demoblaze.com/",

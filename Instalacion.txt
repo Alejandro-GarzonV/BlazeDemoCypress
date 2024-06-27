@@ -21,6 +21,7 @@ instalar de forma forzada  la version 12.2.0 con la siguiente  linea:
                     "test": "npm run limpiar-reporte && npm run ejecutar-pruebas & npm run generar-reporte && npm run abrir-reporte",
                     "cy:open": "cypress open"
                   },
+#Paso 3.4: en el documento  e2e de la carpeta support se debe anexar la siguiente linea > import '@mmisty/cypress-allure-adapter/support';                  
 #Paso 4: agregar dependencia en el package.json >
                 "cypress-cucumber-preprocessor": {
                     "stepDefinitions": "cypress/e2e/step_definitions/**/*.{js,ts}"
@@ -54,6 +55,7 @@ module.exports = defineConfig({
   e2e: {
     async setupNodeEvents(on, config) {
       const bundler = createBundler({
+        define: { global: 'window' },
         plugins: [createEsbuildPlugin(config)],
       });
       on("file:preprocessor", bundler);
