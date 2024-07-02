@@ -1,5 +1,6 @@
+@PAGE
 Feature: Registro
-
+@regresion
 Scenario Outline:Registro de usuario valido
   Given un usuario navega al registro de usuarios Sing up
   When ingresa el usuario <user> y la contraseña <password>

@@ -1,8 +1,9 @@
+@PAGE
 Feature: Navegar categorias
 
 Background: Navegar al home de la pagina y navegar las categorias
     Given un usuario en el homepage 
-
+@regresion
 Scenario Outline: navegar las diferentes categorias
 When navega a la categoria <categoria>
 Then confirma existencia de producto <producto>

@@ -1,5 +1,6 @@
+@PAGE
 Feature: Autenticacion
-
+@regresion
 Scenario Outline: Login de un usuario valido
 Given Luis navega al modal de inicio de sesion
 When ingresa sus credenciales <user>,<pwd>

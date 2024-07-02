@@ -1,5 +1,7 @@
+
 Feature: Realizar una compra
 
+@Compra
 Scenario Outline: Compra de un producto
 Given un usuario en el home del sitio
 When ingresa a una categoria <categoria> y selecciona el producto <producto>
