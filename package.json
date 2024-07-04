@@ -9,8 +9,9 @@
     "generar-reporte": "allure generate allure-results -o allure-report --clean",
     "abrir-reporte": "allure open",
     "test": "npm run limpiar-reporte && npm run ejecutar-pruebas & npm run generar-reporte && npm run abrir-reporte",
-    "ejecutar-pruebas-flujo": "cypress run --browser chrome --headed --env TAGS='@Compra'",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "cy:parallel": "npm run limpiar-reporte && cypress-parallel -s ejecutar-pruebas -t 2 -d ./cypress/e2e/features",
+    "cy:parallel-report": "npm run generar-reporte && npm run abrir-reporte"
   },
   "author": "Alejandro garzon",
   "license": "ISC",
@@ -21,11 +22,12 @@
     "allure-commandline": "2.29.0",
     "cypress": "13.12.0",
     "cypress-esbuild-preprocessor": "1.0.2",
+    "cypress-multi-reporters": "^1.6.4",
+    "cypress-parallel": "^0.14.0",
     "esbuild": "0.21.5",
     "rimraf": "5.0.7"
   },
   "cypress-cucumber-preprocessor": {
     "stepDefinitions": "cypress/e2e/step_definitions/**/*.{js,ts}"
-
   }
 }

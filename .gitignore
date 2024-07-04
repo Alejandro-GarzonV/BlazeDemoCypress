@@ -5,6 +5,8 @@ screenshots/*
 cypress/screenshots/*
 videos/*
 cypress/videos/*
-
+runner-results/*
+cypress/parallel-weights.json
+multi-reporter-config.json
 
 

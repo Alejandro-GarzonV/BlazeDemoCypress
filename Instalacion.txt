@@ -71,16 +71,14 @@ module.exports = defineConfig({
 
 #Paso 6: iniciar  cypress para crear estructura >  npx cypress open
 #Paso 7: en la carpeta e2e > crear carpetas features, step_definitions y en la  carpeta cypress > crear carpeta pages
-
-
-
-
-
+         
 
 Opcionales 
 #Paso 1: Instalar npx "si no esta instalado" >  npm install -g npx
-#Paso 2.0: instalar plugin api               >  npm install 
+#Paso 2: instalar plugin api                 >  npm install 
 #Paso 2.1: Instalar tab                      >  npm install -D cypress-plugin-tab 
 #Paso 2.2: Instalar xpath                    >  npm install -D cypress-xpath
 #Paso 2.3: Instalar upload                   >  npm install --save-dev cypress-file-upload
 #Paso 2.4: Instalar drag and  drop           >  npm install --save-dev @4tw/cypress-drag-drop
+#Paso 2.5:se instala parallel                >npm i cypress-parallel --save-dev --legacy-peer-deps
+          obligatorio para  parallel         >npm install cypress-multi-reporters --save-dev --legacy-peer-deps     
